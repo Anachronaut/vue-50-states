@@ -35,11 +35,13 @@
       this.getAll()
     },
     methods: {
+      //Import state list as a child component
       getAll() {
         this.$stateService.getAll().then(data => {
           this.states = data
         })
       },
+      //Calls setVisited (src/services/stateService.js), then updates states array (getAll)
       updateVisited(stateName, stateVisited) {
         this.$stateService.setVisited(stateName, stateVisited).then(data => {
           this.getAll()
@@ -47,12 +49,14 @@
       }
     },
         computed: {
+          //Returns total number of states visited
           totalVisited() {
             let visited = this.states.filter(function(state) {
               return state.visited
             })
             return visited.length
           },
+          //Returns if all states have been visited
           visitedAll() {
             let visited = this.states.filter(function(state) {
               return state.visited

@@ -1,5 +1,6 @@
 import Router from 'vue-router'
 
+//Import components
 import StateList from '@/components/StateList'
 import StateDetail from '@/components/StateDetail'
 import About from '@/components/About'

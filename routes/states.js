@@ -3,6 +3,8 @@ var States = require('../models').States
 
 var router = express.Router()
 
+
+//Lists all states by name
 router.get('/states', function(req, res, next){
     States.findAll({order: ['name']})
       .then( states => {
@@ -11,6 +13,7 @@ router.get('/states', function(req, res, next){
       .catch( err => next.err() )
 })
 
+//Returns selected state data as JSON
 router.get('/states/:name', function(req, res, next) {
   States.findOne({where: {name: req.params.name}})
     .then(state => {
@@ -23,6 +26,7 @@ router.get('/states/:name', function(req, res, next) {
     .catch( err => next.err() )
 })
 
+//Patches visited/not visited in db
 router.patch('/state/:name', function(req, res, next){
     States.update({ visited: req.body.visited }, { where: {
           name: req.params.name

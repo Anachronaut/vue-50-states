@@ -5,6 +5,7 @@
       <p v-if="state.visited">You have visited this state</p>
       <p v-else>You have not visited this state</p>
 
+      <!--Map-->
       <div id="map-container">
         <l-map
           ref="stateMap"
@@ -46,6 +47,7 @@
     },
     methods: {
       fetchStateData() {
+        //Fetches state name & map data
         this.$stateService.getOne( this.state.name ).then( data => {
         this.state = data
         this.zoom = data.zoom

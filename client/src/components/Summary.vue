@@ -17,6 +17,7 @@
       visitedAll: Boolean
     },
     computed: {
+      //Determines whether or not to pluralize "state" in summary
       statesPlural() {
         return this.total === 1 ? 'state'  : 'states'
       }
